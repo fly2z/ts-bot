@@ -20,6 +20,7 @@ export type CommandCallback = (
 
 export interface CommandOptions {
   aliases?: string[];
+  cooldown?: number;
 }
 
 export interface Command {
@@ -52,7 +53,7 @@ function findCommandByAlias(
 
 export function registerCommands(client: Client, commands: Command[]): void {
   client.on("messageCreate", async (message) => {
-    if (message.author.bot) return; // Ignore messages from bots
+    if (!message.member || message.author.bot) return; // Ignore messages from bots
     if (!message.guild) return;
 
     const prefix = process.env.PREFIX!;
@@ -73,6 +74,37 @@ export function registerCommands(client: Client, commands: Command[]): void {
       } else {
         return;
       }
+    }
+
+    let cooldown = message.client.cooldowns.get(
+      `${command.name}-${message.member.user.username}`
+    );
+
+    if (command.options?.cooldown && cooldown) {
+      if (Date.now() < cooldown) {
+        message.reply(
+          `You have to wait ${Math.floor(
+            Math.abs(Date.now() - cooldown) / 1000
+          )} second(s) to use this command again.`
+        );
+        return;
+      }
+
+      message.client.cooldowns.set(
+        `${command.name}-${message.member.user.username}`,
+        Date.now() + command.options.cooldown * 1000
+      );
+
+      setTimeout(() => {
+        message.client.cooldowns.delete(
+          `${command?.name}-${message.member!.user.username}`
+        );
+      }, command.options.cooldown * 1000);
+    } else if (command.options?.cooldown && !cooldown) {
+      message.client.cooldowns.set(
+        `${command.name}-${message.member.user.username}`,
+        Date.now() + command.options.cooldown * 1000
+      );
     }
 
     const log = console.log.bind(console, `[Command: ${command.name}]`);

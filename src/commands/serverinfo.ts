@@ -3,6 +3,7 @@ import { CommandOptions, command } from "../utils/commands";
 
 const options: CommandOptions = {
   aliases: ["server"],
+  cooldown: 3,
 };
 
 export default command(

@@ -2,7 +2,7 @@ import "dotenv/config";
 import { registerEvents } from "./utils/events";
 import Events from "./events";
 import Commands from "./commands";
-import { Client, GatewayIntentBits } from "discord.js";
+import { Client, Collection, GatewayIntentBits } from "discord.js";
 import { registerCommands } from "./utils/commands";
 
 const client = new Client({
@@ -13,6 +13,8 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
   ],
 });
+
+client.cooldowns = new Collection<string, number>();
 
 registerEvents(client, Events);
 registerCommands(client, Commands);
