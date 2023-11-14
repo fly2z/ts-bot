@@ -4,6 +4,7 @@ import {
   type Client,
   type Message,
 } from "discord.js";
+import { getGuildOption } from "../functions";
 
 export type LogMethod = (...args: unknown[]) => void;
 
@@ -56,7 +57,9 @@ export function registerCommands(client: Client, commands: Command[]): void {
     if (!message.member || message.author.bot) return; // Ignore messages from bots
     if (!message.guild) return;
 
-    const prefix = process.env.PREFIX!;
+    const guildPrefix = await getGuildOption(message.guild, "prefix");
+
+    const prefix = guildPrefix || process.env.PREFIX;
 
     if (!message.content.startsWith(prefix)) return;
     if (message.channel.type !== ChannelType.GuildText) return;

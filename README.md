@@ -10,6 +10,7 @@
 ## Installation, Build and Run
 1) Clone the repository then create a file named `.env` and fill it out accordingly
 ```js
+DATABASE_URL="file:./db.sqlite"
 TOKEN=YOURTOKENHERE
 PREFIX=!
 ```

@@ -1,8 +1,12 @@
 import {
+  Guild,
   GuildMember,
   PermissionFlagsBits,
   PermissionResolvable,
 } from "discord.js";
+import { db } from "./lib/db";
+
+import type { Guild as GuildModel } from "@prisma/client";
 
 export const checkPermissions = (
   member: GuildMember,
@@ -21,4 +25,21 @@ export const checkPermissions = (
         ?.split(/(?=[A-Z])/)
         .join(" ");
   });
+};
+
+export const getGuildOption = async <T extends keyof GuildModel>(
+  guild: Guild,
+  option: T
+): Promise<GuildModel[T] | null> => {
+  const foundGuild = await db.guild.findUnique({
+    where: {
+      id: guild.id,
+    },
+  });
+
+  if (!foundGuild) {
+    return null;
+  }
+
+  return foundGuild[option];
 };

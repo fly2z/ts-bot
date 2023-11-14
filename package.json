@@ -6,17 +6,20 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
+    "db:push": "prisma db push",
     "start": "node ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.5.2",
     "discord.js": "^14.14.0",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
+    "prisma": "^5.5.2",
     "tsx": "^4.1.1"
   }
 }
