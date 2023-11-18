@@ -14,3 +14,16 @@ model Guild {
   id     String @id
   prefix String @default("!")
 }
+
+model User {
+  id         String  @id
+  premium    Boolean @default(false)
+  licenseKey String?
+}
+
+model LicenseKey {
+  id            Int       @id @default(autoincrement())
+  key           String    @unique
+  expiresAt     DateTime?
+  remainingUses Int       @default(1)
+}

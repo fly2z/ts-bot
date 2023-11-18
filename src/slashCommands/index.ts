@@ -4,6 +4,8 @@ import poll from "./general/poll";
 import roleInfo from "./general/roleinfo";
 import serverInfo from "./general/serverinfo";
 import createInvite from "./moderation/createinvite";
+import activateKey from "./premium/activate";
+import premiumOnly from "./premium/test-command";
 
 export default [
   clear,
@@ -11,4 +13,6 @@ export default [
   serverInfo,
   createInvite,
   poll,
+  activateKey,
+  premiumOnly,
 ] as SlashCommand[];
