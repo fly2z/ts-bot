@@ -10,9 +10,10 @@
 ## Installation, Build and Run
 1) Clone the repository then create a file named `.env` and fill it out accordingly
 ```js
-DATABASE_URL="file:./db.sqlite"
+CLIENT_ID=YOURCLIENTID
 TOKEN=YOURTOKENHERE
 PREFIX=!
+DATABASE_URL="file:./db.sqlite"
 ```
 2) Install typescript, This will install the latest version of TypeScript globally on your computer. (You can skip this if you already have typescript installed)
   ```ts

@@ -7,8 +7,7 @@ const options: CommandOptions = {
 
 export default command(
   "ping",
-  async ({ message }, args) => {
-    console.log(args);
+  ({ message }) => {
     return message.reply("pong");
   },
   options
