@@ -5,7 +5,7 @@ import {
   SlashCommandBuilder,
   TextChannel,
 } from "discord.js";
-import { SlashCommand } from "../utils/commands";
+import { SlashCommand } from "../../utils/commands";
 
 const ClearCommand: SlashCommand = {
   command: new SlashCommandBuilder()
@@ -20,6 +20,8 @@ const ClearCommand: SlashCommand = {
         .setRequired(true)
     ),
   execute: async (interaction) => {
+    if (!interaction.guild) return;
+    
     const amount = interaction.options.getInteger("amount");
     const channel = interaction.channel as TextChannel;
 
