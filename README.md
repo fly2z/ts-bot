@@ -6,6 +6,7 @@
 * ✉️ Message commands
 * 🏴 Detailed Permissions
 * 💪 Event handlers
+* 💵 Premium System
 
 ## Installation, Build and Run
 1) Clone the repository then create a file named `.env` and fill it out accordingly
