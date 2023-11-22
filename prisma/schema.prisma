@@ -11,8 +11,11 @@ datasource db {
 }
 
 model Guild {
-  id     String @id
-  prefix String @default("!")
+  id              String  @id
+  prefix          String  @default("!")
+  welcomeMessage  String?
+  welcomeChannel  String?
+  welcomeReaction String?
 }
 
 model User {

@@ -21,7 +21,7 @@ const ClearCommand: SlashCommand = {
     ),
   execute: async (interaction) => {
     if (!interaction.guild) return;
-    
+
     const amount = interaction.options.getInteger("amount");
     const channel = interaction.channel as TextChannel;
 

@@ -5,6 +5,7 @@ import roleInfo from "./general/roleinfo";
 import serverInfo from "./general/serverinfo";
 import createInvite from "./moderation/create-invite";
 import timeout from "./moderation/timeout";
+import welcome from "./moderation/welcome";
 import activateKey from "./premium/activate";
 import premiumOnly from "./premium/test-command";
 
@@ -17,4 +18,5 @@ export default [
   activateKey,
   premiumOnly,
   timeout,
+  welcome,
 ] as SlashCommand[];

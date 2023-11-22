@@ -28,7 +28,7 @@ const PollCommand: SlashCommand = {
     ),
   execute: async (interaction) => {
     if (!interaction.guild) return;
-    
+
     const { options } = interaction;
 
     const channel = options.getChannel("channel") as TextChannel;

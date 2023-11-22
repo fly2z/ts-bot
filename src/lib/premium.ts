@@ -55,7 +55,7 @@ export async function activatePremium(
     where: { id: userId },
     data: {
       premium: true,
-      licenseKey: licenseKey
+      licenseKey: licenseKey,
     },
   });
 

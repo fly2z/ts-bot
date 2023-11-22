@@ -1,8 +1,4 @@
-import {
-  Colors,
-  EmbedBuilder,
-  SlashCommandBuilder,
-} from "discord.js";
+import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { SlashCommand } from "../../utils/commands";
 
 const RoleInfo: SlashCommand = {
