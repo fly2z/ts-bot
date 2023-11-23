@@ -1,4 +1,4 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { SlashCommand } from "../../utils/commands";
 
 const ServerInfo: SlashCommand = {
@@ -11,6 +11,7 @@ const ServerInfo: SlashCommand = {
     const { guild } = interaction;
 
     const serverInfoEmbed = new EmbedBuilder()
+      .setColor(Colors.DarkOrange)
       .addFields({
         name: "Owner",
         value: (await guild.fetchOwner()).user.tag,

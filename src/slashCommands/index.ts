@@ -3,6 +3,7 @@ import clear from "./general/clear";
 import poll from "./general/poll";
 import roleInfo from "./general/roleinfo";
 import serverInfo from "./general/serverinfo";
+import whois from "./general/whois";
 import createInvite from "./moderation/create-invite";
 import timeout from "./moderation/timeout";
 import welcome from "./moderation/welcome";
@@ -19,4 +20,5 @@ export default [
   premiumOnly,
   timeout,
   welcome,
+  whois
 ] as SlashCommand[];
