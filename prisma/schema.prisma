@@ -16,6 +16,7 @@ model Guild {
   welcomeMessage  String?
   welcomeChannel  String?
   welcomeReaction String?
+  antiBotEnabled  Boolean @default(false)
 }
 
 model User {

@@ -2,7 +2,7 @@ import { TextChannel } from "discord.js";
 import { db } from "../lib/db";
 import { event, Events } from "../utils/events";
 
-export default event(Events.GuildMemberAdd, async ({ log }, member) => {
+export default event(Events.GuildMemberAdd, async ({ client, log }, member) => {
   log(`${member.user.tag} joined to ${member.guild.name}`);
 
   const guild = await db.guild.findUnique({
@@ -11,8 +11,17 @@ export default event(Events.GuildMemberAdd, async ({ log }, member) => {
       welcomeChannel: true,
       welcomeMessage: true,
       welcomeReaction: true,
+      antiBotEnabled: true,
     },
   });
+
+  if (
+    guild?.antiBotEnabled &&
+    member.user.bot &&
+    member.id !== client.user?.id
+  ) {
+    return await member.kick("Anti bot system");
+  }
 
   if (!guild?.welcomeChannel || !guild.welcomeMessage) return;
 
