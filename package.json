@@ -1,7 +1,7 @@
 {
-  "name": "ts-bot",
+  "name": "synthora",
   "version": "1.0.0",
-  "description": "",
+  "description": "A discord bot made with typescript",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -11,7 +11,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.5.2",
     "discord.js": "^14.14.0",
